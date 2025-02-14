@@ -1,0 +1,266 @@
+==========================  Filename:  ==========================
+  Name: you22030.c
+
+
+=========================  Compiling:  ==========================
+  No warnings or errors while compiling. That's a good sign! :)
+
+
+==========================  Running:  ===========================
+  The "Enter number:" prompt correctly printed to stderr. :)
+  No warnings or errors while running. That's a good sign! :)
+
+
+===================  Result of diff command:  ===================
+  Good work!
+  There are no differences between your output and the solution!
+
+
+=============  Checking other code requirements:  ===============
+
+  According to the script, it looks like you used a loop and
+   incremented variables that were formatted to create each row in
+   the table. (If so, that's good! However, you should verify.)
+
+  Good: The "Summary" in the header was updated. :)
+  Good: The comment above "main" was updated. :)
+
+  To Do: Double check that you used "malloc()" exactly twice.
+  Each time you used "malloc()" should appear below:
+   p1 = (int *)malloc(sizeof(int));
+   p1 = (int *)malloc(sizeof(int));
+  This script found 2 time(s) that you used "malloc()". Good! Please verify.
+
+  To Do: Double check that you used "free()" twice (once for each malloc).
+  Each time you used "free()" should appear below:
+   free(p1);
+   free(p2);
+  This script found 2 time(s) that you used "free()". Good! Please verify.
+
+  To Do: Double check that you checked each pointer against NULL. (Should be checked twice, once for each malloc.)
+  Each time you checked a pointer against NULL should appear below:
+   if (p1 == NULL) {
+   if (p1 == NULL) {
+  This script found 2 time(s) that you checked pointers against NULL. Good! Please verify.
+
+  To Do: Double check that you updated all C++ comments to now refer to the C version.
+
+=========================  Scoresheet: ==========================
+This is where you will score yourself using the CANVAS DocViewer
+according to the instructions given in our next class.
+Under each section, highlight anything that applies to your file.
+Also, add comments to your code (at the end of this file).
+
+o = possible good things
+X = possible bad things
+Note: You should highlight the options below that apply to your code.
+
+  TOTAL SCORE  __________ / 50
+
+    STYLE __________ / 10
+
+        o Properly commented
+        X Insufficiently commented
+          - "descriptive text" was not updated
+          - comments still describe C++ code, e.g. setw()
+        o Proper indentation
+        X Inconsistent indentation
+        o Meaningful variable names and variables properly named
+        X Spelling and grammar errors
+
+    PROGRAM CORRECTNESS __________ / 20
+
+      Compiling and running: 
+        o Code compiles
+        X Does not compile
+        o Code runs successfully
+        X Code crashes (e.g., causes seg fault)
+
+      Output of program:
+        o No differences shown with diff command 
+        X Incorrect output identified with diff command
+          - whitespace issues (tabs, spaces)
+          - digits of precision
+        X Integer outputs didn't match
+        X Float outputs didn't match
+        X Pointer outputs didn't match
+        X Other outputs didn't match
+
+      User prompt to correct output stream:
+        o For "Enter number" prompt, uses fprintf with stderr
+        X The "Enter number" prompt didn't go to stderr
+
+    ELEGANCE __________ / 20
+
+      Table:
+        o Loop used to print each line of table
+        X Each line of table was hard coded in the code
+        o Used %o %d %x %c for formating a single value different ways
+        X Different bases/codes were hardcoded or less elegant
+
+      Memory allocation:
+        o Checked return value on malloc()
+          - Provided a warning message if null pointer returned
+          - Exited program if null pointer returned
+        X Used allocated memory without checking if null pointer
+        o Used free to free up allocated memory
+        X Didn't free up allocated memory at end
+
+      Other:
+        o Implements requirements listed in assignment sheet
+        o Uses field width and left justification
+        o No unnecessary code
+
+
+================ Student's submitted source code:  ==============
+  Using the DocViewer, add comments to your code below.
+
+
+/***********************************************************************
+* Program:
+*    Lab C_lab, ECEN 324 Learning C Lab
+*    Brother Allred, ECEN 324
+* Author:
+*    Brodric Young
+* Summary:
+*    Changing C++ code into C code to print of various items.
+************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define PI 3.1415926
+
+/***********************************************************************
+* Print various items (integers, letters, floats), get inputs, and do math 
+***********************************************************************/
+int main (void)
+{
+   // Printing various items
+ 
+   const char LETTER = 'A';
+   printf("24\n");
+   printf("%.5f\n", PI);
+   printf("%c\n", LETTER);
+ 
+   float payRate = 10.50;
+   int hours = 40;
+ 
+   printf("Users pay rate: $%g\n", payRate);
+   printf(" Hours worked: %d\n", hours);
+   printf("    Gross Pay: $%g\n", hours * payRate);
+ 
+   // Get input intger and do math with it
+   int number;
+   fprintf(stderr, "Enter number: ");
+   scanf("%d", &number);
+   printf("Twice %d is %d\n", number, number * 2);
+ 
+   /*********************************************************************/
+   /*********************** Output an Integer ***************************/
+   /*********************************************************************/
+   int anInt = 99;
+   float aFloat = 43.2;
+ 
+   // Output the integer with the default formatting.
+   //
+   printf("\n");    // output a blank line
+   printf("Integer: %d ###\n", anInt);
+ 
+   // Output the integer in a fixed field width of 10, right justified.
+   // 
+   printf("Integer: %10d ###\n", anInt);
+ 
+   // Output the integer in a fixed field width of 10
+   // and left justified in the field.
+   //
+   printf("Integer: %-10d ###\n\n", anInt);
+   
+   /*********************************************************************/
+   /************************* Output a Float ****************************/
+   /*********************************************************************/
+ 
+   // Output the float with the default formatting.
+   //
+   printf("  Float: %g ###\n", aFloat);
+ 
+   // Output the float in a fixed field width of 10, left justified.
+   //
+   printf("  Float: %-10g ###\n", aFloat);
+ 
+   // Output the float right justified in a field width of 10 with  
+   // a precision of 2 places after the decimal point for the float. 
+   //
+   printf("  Float: %10.2f ###\n", aFloat);
+ 
+   // Output the float with 3 places of precision after the decimal point but
+   // not giving a field width.
+   //
+   printf("  Float: %.3f ###\n", aFloat);
+ 
+   // Output the float with 3 places of precision after the decimal point with
+   // a field width of 10. 
+   //
+   printf("  Float: %10.3f ###\n", aFloat);
+
+   // Output the float with 4 places of precision after the decimal point with 
+   // a feild width of 10
+   //
+   printf("  Float: %-10.4f ###\n\n", aFloat);
+ 
+   /*********************************************************************
+    *************** Table of numbers 97 to 122 (base 10) in different bases ******************
+    *********************************************************************/
+
+   printf("\tOct   Dec   Hex   Char\n");
+   printf("\t----------------------\n");
+
+   // loop through the numbers 97 up to and including 122 and print that number in octal, decimal, hex, and the ascii character
+   for (int i = 97; i < 123; i++) {
+      printf("\t%-5o %-5d %-5x %c\n", i, i, i, i);
+   }
+   printf("\n");
+
+   /*********************************************************************
+    *************** Creating and displaying pointers *****************
+    *********************************************************************/
+ 
+   int *p1;
+   int *p2;
+
+ // allocate memory and verify its not null
+   p1 = (int *)malloc(sizeof(int));
+   if (p1 == NULL) {
+      printf("Memory allocation failed.\n");
+      return 1;
+   }
+   *p1 = 42;
+   p2 = p1;
+   printf("*p1 == %d\n", *p1);
+   printf("*p2 == %d\n", *p2);
+ 
+   *p2 = 53;
+   printf("*p1 == %d\n", *p1);
+   printf("*p2 == %d\n", *p2);
+ 
+// allocate memory and verify its not null
+   p1 = (int *)malloc(sizeof(int));
+   if (p1 == NULL) {
+      printf("Memory allocation failed.\n");
+      return 1;
+   }
+   *p1 = 88;
+   printf("*p1 == %d\n", *p1);
+   printf("*p2 == %d\n", *p2);
+ 
+   printf("Hope you got the point of this example!\n");
+ 
+// free memory held by pointers
+   free(p1);
+   free(p2);
+
+   return 0;
+}
+
+
+
